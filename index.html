@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Smart CRUD App</title>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+  <header>
+    <h1>Smart CRUD App</h1>
+    <div class="buttons">
+      <button onclick="openCreateModal('file')">New File</button>
+      <button onclick="openCreateModal('folder')">New Folder</button>
+      <button onclick="openCreateModal('container')">New Container</button>
+    </div>
+  </header>
+
+  <main id="content"></main>
+
+  <!-- Global Create Modal -->
+  <div id="modal" class="modal hidden">
+    <div class="modal-content">
+      <h2 id="modal-title">Create</h2>
+      <input id="item-name" placeholder="Name" />
+      <textarea id="item-content" placeholder="Content (URL, text, etc.)"></textarea>
+      <button onclick="createItem()">Create</button>
+      <button onclick="closeModal()">Cancel</button>
+    </div>
+  </div>
+
+  <!-- Folder Modal -->
+  <div id="folder-view" class="modal hidden">
+    <div class="modal-content">
+      <h2 id="folder-title">Folder View</h2>
+      <div id="folder-items" class="folder-content"></div>
+      <div class="buttons">
+        <button onclick="openFolderCreateModal('file')">New File</button>
+        <button onclick="openFolderCreateModal('container')">New Container</button>
+        <button onclick="closeFolder()">Close Folder</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
