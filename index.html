@@ -1,47 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Smart CRUD App</title>
-  <link rel="stylesheet" href="style.css"/>
+  <meta charset="UTF-8">
+  <title>Smart CRUD - Home</title>
+  <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
   <header>
-    <h1>Smart CRUD App</h1>
-    <div class="buttons">
-      <button onclick="openCreateModal('file')">New File</button>
-      <button onclick="openCreateModal('folder')">New Folder</button>
-      <button onclick="openCreateModal('container')">New Container</button>
+    <h1>Smart CRUD Home</h1>
+    <div class="controls">
+      <button onclick="createFolder()">+ Folder</button>
+      <button onclick="createFile()">+ File</button>
+      <button onclick="createLink()">+ Link</button>
     </div>
   </header>
+  <main id="content-area"></main>
 
-  <main id="content"></main>
-
-  <!-- Global Create Modal -->
-  <div id="modal" class="modal hidden">
-    <div class="modal-content">
-      <h2 id="modal-title">Create</h2>
-      <input id="item-name" placeholder="Name" />
-      <textarea id="item-content" placeholder="Content (URL, text, etc.)"></textarea>
-      <button onclick="createItem()">Create</button>
-      <button onclick="closeModal()">Cancel</button>
-    </div>
+  <!-- File Modal -->
+  <div id="file-modal" class="modal">
+    <textarea id="file-editor" placeholder="Start typing..."></textarea>
+    <button id="close-file-modal">Close</button>
   </div>
 
-  <!-- Folder Modal -->
-  <div id="folder-view" class="modal hidden">
-    <div class="modal-content">
-      <h2 id="folder-title">Folder View</h2>
-      <div id="folder-items" class="folder-content"></div>
-      <div class="buttons">
-        <button onclick="openFolderCreateModal('file')">New File</button>
-        <button onclick="openFolderCreateModal('container')">New Container</button>
-        <button onclick="closeFolder()">Close Folder</button>
-      </div>
-    </div>
-  </div>
-
-  <script src="script.js"></script>
+  <script src="js/db.js"></script>
+  <script src="js/main.js"></script>
 </body>
 </html>
