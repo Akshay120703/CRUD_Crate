@@ -33,7 +33,16 @@ function updateItem(id, data) {
 function deleteItem(id, callback) {
   const tx = db.transaction(STORE_NAME, "readwrite");
   const store = tx.objectStore(STORE_NAME);
-  store.delete(id).onsuccess = callback;
+  const deleteRequest = store.delete(Number(id));
+
+  deleteRequest.onsuccess = () => {
+    console.log(`Item ${id} deleted`);
+    if (callback) callback();
+  };
+
+  deleteRequest.onerror = () => {
+    console.error(`Failed to delete item ${id}`);
+  };
 }
 
 function getAllItems(callback, parent = null) {
